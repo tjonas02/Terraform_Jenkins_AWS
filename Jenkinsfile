@@ -32,5 +32,6 @@ pipeline {
                 echo "Terraform action is --> ${action}"
                 sh ('${action} --auto-approve') 
         }
+        }
     }
 }
