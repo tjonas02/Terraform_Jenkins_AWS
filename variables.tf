@@ -52,13 +52,3 @@ variable "instance_type" {
   description = "EC2 instance type"
   default     = "t2.micro"
 }
-
-variable "db_username" {
-  description = "Database username"
-  default     = "admin"
-}
-
-variable "db_password" {
-  description = "Database password"
-  default     = "password"  # Use a secure method for secrets
-}
