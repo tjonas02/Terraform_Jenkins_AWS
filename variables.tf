@@ -45,7 +45,7 @@ variable "master_username" {
 
 variable "master_password" {
   description = "Database password"
-  default     = "M@lden62" 
+  default     = "Malden62" 
 }
 
 variable "instance_type" {
