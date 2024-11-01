@@ -110,7 +110,7 @@ resource "aws_security_group" "db_sg" {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    security_groups = sg-06668abe3412e3fb3
+    security_groups = [aws_security_group.app_sg.id]
   }
 
   egress {
@@ -126,14 +126,14 @@ resource "aws_instance" "web_1" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_1.id
-  security_groups = sg-09e5a980aa21e2730
+  security_groups = [aws_security_group.web_sg.name]
 }
 
 resource "aws_instance" "web_2" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_2.id
-  security_groups = sg-09e5a980aa21e2730
+  security_groups = [aws_security_group.web_sg.name]
 }
 
 # EC2 Instances for Application Layer
@@ -141,14 +141,14 @@ resource "aws_instance" "app_1" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_1.id
-  security_groups = sg-09e5a980aa21e2730
+  security_groups = [aws_security_group.app_sg.name]
 }
 
 resource "aws_instance" "app_2" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_2.id
-  security_groups = sg-09e5a980aa21e2730
+  security_groups = [aws_security_group.app_sg.name]
 }
 
 # RDS Instance for Database Layer
@@ -160,7 +160,7 @@ resource "aws_db_instance" "db" {
   username           = var.db_username
   password           = var.db_password
   db_name            = "mydatabase"
-  vpc_security_group_ids = sg-06668abe3412e3fb3
+  vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name = aws_db_subnet_group.main.name
   skip_final_snapshot = true
 }
