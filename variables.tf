@@ -38,11 +38,6 @@ variable "app_instance_ami" {
   default     = "ami-06b21ccaeff8cd686"  
 }
 
-variable "instance_type" {
-  description = "EC2 instance type"
-  default     = "t2.micro"
-}
-
 variable "db_username" {
   description = "Database username"
   default     = "admin"
