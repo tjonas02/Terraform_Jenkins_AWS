@@ -159,8 +159,8 @@ resource "aws_db_instance" "db" {
   storage_type        = "gp2"
   allocated_storage   = 20
   engine_version     = "16.3"
-  username           = var.db_username
-  password           = var.db_password
+  username           = var.master_username
+  password           = var.master_password
   db_name            = "mydatabase"
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name = aws_db_subnet_group.main.name
