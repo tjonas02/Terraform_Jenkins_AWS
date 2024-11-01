@@ -30,12 +30,12 @@ variable "private_subnet_2_cidr" {
 
 variable "web_instance_ami" {
   description = "AMI ID for web server instances"
-  default     = "ami-06b21ccaeff8cd686"  
+  default     = "ami-0583d8c7a9c35822c"  
 }
 
 variable "app_instance_ami" {
   description = "AMI ID for application server instances"
-  default     = "ami-06b21ccaeff8cd686"  
+  default     = "ami-0583d8c7a9c35822c"  
 }
 
 variable "db_username" {
