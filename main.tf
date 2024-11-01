@@ -155,8 +155,10 @@ resource "aws_instance" "app_2" {
 resource "aws_db_instance" "db" {
   identifier         = "mydb"
   engine             = "postgres"
-  instance_class     = "db.t2.micro"
+  instance_class     = "db.t3.micro"
+  storage_type        = "gp2"
   allocated_storage   = 20
+  engine_version     = "16.3"
   username           = var.db_username
   password           = var.db_password
   db_name            = "mydatabase"
