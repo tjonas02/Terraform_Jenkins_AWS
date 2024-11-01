@@ -40,12 +40,12 @@ variable "app_instance_ami" {
 
 variable "master_username" {
   description = "Database username"
-  default     = "dbadmin"
+  default     = "jonas"
 }
 
 variable "master_password" {
   description = "Database password"
-  default     = "M@lden62"  # Use a secure method for secrets
+  default     = "M@lden62" 
 }
 
 variable "instance_type" {
