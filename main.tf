@@ -12,6 +12,9 @@ resource "aws_subnet" "public_1" {
   cidr_block              = var.public_subnet_1_cidr
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
+  tags = {
+    Name  = "Riverside_subnet_public_1"
+  }
 }
 
 resource "aws_subnet" "public_2" {
@@ -19,6 +22,9 @@ resource "aws_subnet" "public_2" {
   cidr_block              = var.public_subnet_2_cidr
   availability_zone       = "us-east-1b"
   map_public_ip_on_launch = true
+  tags = {
+    Name  = "Riverside_subnet_public_2"
+  }
 }
 
 # Create private subnets
@@ -26,12 +32,18 @@ resource "aws_subnet" "private_1" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.private_subnet_1_cidr
   availability_zone = "us-east-1a"
+  tags = {
+    Name  = "Riverside_subnet_private_1"
+  }
 }
 
 resource "aws_subnet" "private_2" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.private_subnet_2_cidr
   availability_zone = "us-east-1b"
+  tags = {
+    Name  = "Riverside_subnet_private_2"
+  }
 }
 
 # Create Internet Gateway
@@ -126,6 +138,9 @@ resource "aws_instance" "web_1" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_1.id
+  tags= {
+    Name = Riverside_web1
+  }
   #security_groups = [aws_security_group.web_sg.name]
 }
 
@@ -133,6 +148,9 @@ resource "aws_instance" "web_2" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_2.id
+  tags= {
+    Name = Riverside_web2
+  }
   #security_groups = [aws_security_group.web_sg.name]
 }
 
@@ -141,6 +159,9 @@ resource "aws_instance" "app_1" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_1.id
+   tags= {
+    Name = Riverside_app1
+  }
   #security_groups = [aws_security_group.app_sg.name]
 }
 
@@ -148,6 +169,9 @@ resource "aws_instance" "app_2" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_2.id
+  tags= {
+    Name = Riverside_app2
+  }
   #security_groups = [aws_security_group.app_sg.name]
 }
 
