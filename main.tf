@@ -139,7 +139,7 @@ resource "aws_instance" "web_1" {
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_1.id
   tags= {
-    Name = Riverside_web1
+    Name = db_bastion_Host
   }
   #security_groups = [aws_security_group.web_sg.name]
 }
@@ -149,7 +149,7 @@ resource "aws_instance" "web_2" {
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_2.id
   tags= {
-    Name = Riverside_web2
+    Name = Load-Balancer
   }
   #security_groups = [aws_security_group.web_sg.name]
 }
