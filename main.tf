@@ -138,20 +138,14 @@ resource "aws_instance" "web_1" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_1.id
-  tags= {
-    Name = db_bastion_Host
-  }
-  #security_groups = [aws_security_group.web_sg.name]
+    #security_groups = [aws_security_group.web_sg.name]
 }
 
 resource "aws_instance" "web_2" {
   ami           = var.web_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.public_2.id
-  tags= {
-    Name = Load-Balancer
-  }
-  #security_groups = [aws_security_group.web_sg.name]
+    #security_groups = [aws_security_group.web_sg.name]
 }
 
 # EC2 Instances for Application Layer
@@ -159,9 +153,6 @@ resource "aws_instance" "app_1" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_1.id
-   tags= {
-    Name = Riverside_app1
-  }
   #security_groups = [aws_security_group.app_sg.name]
 }
 
@@ -169,10 +160,7 @@ resource "aws_instance" "app_2" {
   ami           = var.app_instance_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.private_2.id
-  tags= {
-    Name = Riverside_app2
-  }
-  #security_groups = [aws_security_group.app_sg.name]
+    #security_groups = [aws_security_group.app_sg.name]
 }
 
 # RDS Instance for Database Layer
